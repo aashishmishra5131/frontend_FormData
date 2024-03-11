@@ -37,7 +37,7 @@ function Details() {
       // }));
       // dispatch(sendDataToBackend());
       setShowMessage(true);
-      const result=await axios.post("http://localhost:4000/api/v1/form/form",formData)
+      const result=await axios.post(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/form`,formData)
       console.log(result);
     }  catch (error) {
       console.log(error)

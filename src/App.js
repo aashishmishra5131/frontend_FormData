@@ -28,15 +28,15 @@ function App() {
     console.log('Delete row:', row);
   };
  const dispatch=useDispatch();
-useEffect(()=>{
-  const Alldata=async()=>{
-  const result=await axios.get("http://localhost:4000/api/v1/form/alldata")
-  console.log(result);
+// useEffect(()=>{
+//   const Alldata=async()=>{
+//   const result=await axios.get(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/alldata`)
+//   console.log(result);
 
-store.dispatch(Name(result.data))
-  }
-  Alldata();
-},[])
+// store.dispatch(Name(result.data))
+//   }
+//   Alldata();
+// },[])
 
 
 
