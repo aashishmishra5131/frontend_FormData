@@ -8,12 +8,12 @@ import { store } from './app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
-  const data=useSelector((state)=>{
-    state.alldata
-  });
-  if(data){
-  console.log(data,"getalldata");
-  }
+  // const data=useSelector((state)=>{
+  //   state.alldata
+  // });
+  // if(data){
+  // console.log(data,"getalldata");
+  // }
   const [showModal, setShowModal] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
 

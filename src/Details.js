@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Details.css';
 import {useDispatch} from  'react-redux';
 import { Name } from './features/data/dataSlice';
-import { sendDataToBackend } from './features/data/dataSlice';
 import axios from 'axios';
 function Details() {
   const [formData, setFormData] = useState({
