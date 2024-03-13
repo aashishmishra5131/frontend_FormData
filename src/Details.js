@@ -35,10 +35,10 @@ function Details() {
       //   City:formData.City,
       //   DOB:formData.DOB
       // }));
-      // dispatch(sendDataToBackend());
       setShowMessage(true);
       const result=await axios.post(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/form`,formData)
       console.log(result);
+      
     }  catch (error) {
       console.log(error)
   }

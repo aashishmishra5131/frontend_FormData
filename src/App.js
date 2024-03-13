@@ -8,14 +8,9 @@ import { store } from './app/store';
 import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
-  // const data=useSelector((state)=>{
-  //   state.alldata
-  // });
-  // if(data){
-  // console.log(data,"getalldata");
-  // }
   const [showModal, setShowModal] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const dispatch=useDispatch();
 
   const handleModalClose = () => {
     setShowModal(false);
@@ -27,17 +22,21 @@ function App() {
   const handleDelete = (row) => {
     console.log('Delete row:', row);
   };
- const dispatch=useDispatch();
-// useEffect(()=>{
-//   const Alldata=async()=>{
-//   const result=await axios.get(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/alldata`)
-//   console.log(result);
+  
+ 
+const data=useSelector((state)=>state.alldata);
+if(data){
+console.log(data,"getalldata");
+}
+useEffect(()=>{
+  const Alldata=async()=>{
+  const result=await axios.get(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/alldata`)
+  console.log(result,"resultdata");
 
-// store.dispatch(Name(result.data))
-//   }
-//   Alldata();
-// },[])
-
+store.dispatch(Name(result.data))
+  }
+  Alldata();
+},[data])
 
 
   return (
@@ -62,54 +61,20 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>John Doe</td>
-            <td>a@gmail.com</td>
-            <td>1234567890</td>
-            <td>30</td>
-            <td>New York</td>
-            <td>12/12/2000</td>
-            <td>
-              <button className='edit' onClick={() => handleEdit(1)}>Edit</button>
-              <button className='delete' onClick={() => handleDelete(1)}>Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>John </td>
-            <td>a@gmail.com</td>
-            <td>1234567890</td>
-            <td>30</td>
-            <td>New York</td>
-            <td>12/12/2000</td>
-            <td>
-              <button className='edit' onClick={() => handleEdit(1)}>Edit</button>
-              <button className='delete' onClick={() => handleDelete(1)}>Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Jane Smith</td>
-            <td>a@gmail.com</td>
-            <td>1234567890</td>
-            <td>25</td>
-            <td>San Francisco</td>
-            <td>12/12/2000</td>
-            <td>
-              <button className='edit' onClick={() => handleEdit(1)}>Edit</button>
-              <button className='delete' onClick={() => handleDelete(1)}>Delete</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Mike Johnson</td>
-            <td>a@gmail.com</td>
-            <td>1234567890</td>
-            <td>35</td>
-            <td>Chicago</td>
-            <td>12/12/2000</td>
-            <td>
-              <button className='edit' onClick={() => handleEdit(1)}>Edit</button>
-              <button className='delete' onClick={() => handleDelete(1)}>Delete</button>
-            </td>
-          </tr>
+        {data.datas.map((data, index) =>(
+              <tr key={index}>
+                <td>{data.FullName}</td>
+                <td>{data.Email}</td>
+                <td>{data.Number}</td>
+                <td>{data.Age}</td>
+                <td>{data.City}</td>
+                <td>{data.DOB}</td>
+                <td>
+                  <button className='edit' onClick={() => handleEdit(data)}>Edit</button>
+                  <button className='delete' onClick={() => handleDelete(data)}>Delete</button>
+                </td>
+              </tr>
+        ))}
         </tbody>
       </table>
 
