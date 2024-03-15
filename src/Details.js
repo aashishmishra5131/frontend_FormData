@@ -27,14 +27,6 @@ function Details() {
     e.preventDefault();
     try {
       setShowDetails(false); 
-      // dispatch(Name({
-      //   FullName: formData.FullName,
-      //   Email: formData.Email,
-      //   Number: formData.Number,
-      //   Age: formData.Age,
-      //   City:formData.City,
-      //   DOB:formData.DOB
-      // }));
       setShowMessage(true);
       const result=await axios.post(`${process.env.REACT_APP_BACKENDRURL}/api/v1/form/form`,formData)
       console.log(result);

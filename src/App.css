@@ -41,9 +41,20 @@ th, td {
 }
 
 .edit{
-  margin-right: 10px;
+  margin-right: 7%;
+  background-color: #007bff;
 }
 .delete{
   background-color: red;
+}
+.delete:hover{
+  background-color: red;
+}
+.update{
+  padding: 10px 20px;
+  background-color: green;
+}
+.update:hover{
+  background-color: green;
 }
 
